@@ -1,0 +1,6 @@
+.env
+image_*
+settings.json
+
+env/
+web_clonadas/

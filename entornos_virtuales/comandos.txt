@@ -1,0 +1,19 @@
+virtualenv env
+source env/bin/activate
+
+which python  # Mostrará la ruta del ejecutable virtual de python
+
+Todo lo que instale quedará en este entorno y no interferirá con los demás
+
+En cada nuevo entorno virtual actualizar pip
+pip install -U pip
+
+Paquetes a instalar
+pip install requests
+pip install pywebcopy
+pip install speedtest-cli
+pip install bottle
+
+
+generar manifiesto de dependencias de lenguaje
+pip freeze > requirements.txt
