@@ -1,6 +1,7 @@
 .env
 image_*
 settings.json
+*.wav
 
 env/
 web_clonadas/
