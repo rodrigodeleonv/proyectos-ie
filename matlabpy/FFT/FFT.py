@@ -9,7 +9,7 @@ from scipy.io.wavfile import write as write_wav
 from scipy.fft import fft, fftfreq
 from scipy.fft import rfft, rfftfreq, irfft
 
-BASE = BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SAMPLE_RATE = 44100  # Hertz
 DURATION = 5  # Seconds
@@ -82,7 +82,7 @@ plt.show()
 # FFT Inversa
 new_sig = irfft(yf)
 plt.plot(new_sig[:1000])
-plt.xlabel('Frecuencia')
+plt.xlabel('Tiempo')
 plt.ylabel('Amplitud')
 plt.title('Resultado de aplicar FFT inversa')
 plt.show()

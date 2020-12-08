@@ -5,11 +5,13 @@ import numpy as np
 
 # # 1
 # plt.plot([1, 2, 3, 4])
-# plt.ylabel('some numbers')
+# plt.ylabel('Eje Y')
+# plt.xlabel('Eje X')
+# plt.show()
+# #
 # plt.plot([1, 2, 3, 4], [1, 4, 9, 16])
 # plt.plot([1, 2, 3, 4], [1, 4, 9, 16], 'ro')
 # plt.axis([0, 6, 0, 20])
-# plt.legend()
 # plt.show()
 # # -------------------------------------------
 
