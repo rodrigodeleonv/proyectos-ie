@@ -1,0 +1,19 @@
+Dependencias utiles
+
+# Ubuntu 20.04
+
+sudo apt update && sudo apt upgrade
+
+sudo apt install libssl-dev libffi-dev libmysqlclient-dev python3-dev python3-pip libbz2-dev liblzma-dev libncursesw5-dev libgdbm-dev libsqlite3-dev tk-dev uuid-dev libreadline-dev build-essential zlib1g-dev libncurses5-dev libnss3-dev wget libncursesw5-dev libc6-dev
+
+    Virtualenv
+sudo apt install python3-virtualenv
+
+    Matplotlib graficas desde la terminal
+sudo apt install python3-tk
+
+    Simple audio
+sudo apt install python3-dev libasound2-dev
+
+    Pyaudio
+sudo apt install -y python3-dev portaudio19-dev
