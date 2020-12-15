@@ -1,0 +1,9 @@
+NOMBRE              Edad        DPI             Inscripcion
+Juan Sinatra        20          5632478569251   06/08/2000
+Alfred Tic          30          2569874523651   02/06/1999
+Pedro Sac           52          3698756214587   08/06/2010
+Maria Debi          36          5789632145294   10/03/2005
+John Mirko          45          4523687452165   13/01/2015
+Felipe Dun          63          6352144512334   30/12/2008
+Diego Mazariegos    12          4723698211523   25/03/1980
+Marco Ina           38          3698745622274   23/11/1988
