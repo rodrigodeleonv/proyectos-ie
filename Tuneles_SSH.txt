@@ -1,0 +1,31 @@
+#
+# Servidor web Docker
+#
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker your-user
+sudo reboot
+
+screen -S ss
+docker run --rm --name ngx1 -p 8080:80 nginx
+
+#
+# Tuneles SSH
+#
+
+# Tunel directo
+ssh -nNTv -L 9999:localhost:8080 ubuntu@<IP_HOST> -i "~/.ssh/privkey.pem"
+ssh -nNTv -L 9999:localhost:8080 <ALIAS_SSH>
+
+# Tunel inverso
+# archivo de configuracion
+sudo nano /etc/ssh/sshd_config
+add: GatewayPorts yes to /etc/ssh/sshd_config
+sudo service sshd restart
+
+ssh -nNTv -R 8580:10.1.27.1:80 ubuntu@<IP_HOST> -i "~/.ssh/privkey.pem"  (Mi Router)
+
+# Server Web local expuesto en internet
+python manage.py runserver 0.0.0.0:8080
+ssh -nNTv -R 8600:localhost:8080 ubuntu@<IP_HOST> -i "~/.ssh/privkey.pem"

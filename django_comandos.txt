@@ -1,0 +1,26 @@
+#
+# Django
+#
+
+# Instalar
+pip install Django
+
+# Crear un proyecto
+django-admin startproject <NOMBRE_PROYECTO>
+django-admin startproject <NOMBRE_PROYECTO> <RUTA>
+
+# Ejemplo
+django-admin startproject usac .
+
+# Crear aplicaciones del proyecto de django
+python manage.py startapp <NOMBRE_APP>
+python manage.py startapp fingenieria
+
+# Archivo de settigs.py
+Agregar las app creadas para incoporrarlas al proyecto
+....
+ALLOWED_HOSTS = ['<HOST>', '*']
+INSTALLED_APPS = [
+    ...,
+    '<NOMBRE_APP>'
+]
