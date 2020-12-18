@@ -5,6 +5,6 @@ settings.json
 *.wav
 *.sqlite3
 
-env/
+env*/
 web_clonadas/
 .vscode/

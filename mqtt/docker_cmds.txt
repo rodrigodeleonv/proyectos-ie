@@ -1,0 +1,4 @@
+
+# Mosquitto Server
+# https://hub.docker.com/_/eclipse-mosquitto
+docker run --rm --name mosquitto1 -p 8601:1883 eclipse-mosquitto
