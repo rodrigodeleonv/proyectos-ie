@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block title %}Sensores{% endblock %}
+
+{% block principal %}Mostrar sensores{% endblock %}
+
+{% block content %}
+
+<table>
+    <thead>
+        <th>Nombre</th>
+        <th>Tipo</th>
+    </thead>
+    <tbody>
+        {% for sensor in sensores %}
+        <tr>
+            <td>{{ sensor.name }}</td>
+            <td>{{ sensor.tipo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block script %}{% endblock %}

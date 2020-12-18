@@ -1,0 +1,74 @@
+{% extends "base/base.html" %}
+
+
+{% block style %}
+<style>
+    .encendido {
+        background-color: #FBD603;
+    }
+    .apagado {
+        background-color:gray;
+    }
+</style>
+{% endblock %}
+
+
+{% block title %}Inicio{% endblock %}
+
+
+{% block principal %}Pagina principal para la App IoT{% endblock %}
+
+
+{% block content %}
+<p>Edge devices ...</p>
+<p>Fog Netwkork: ...</p>
+<h2>Variables enviadas como contexto</h2>
+<p>variable1 {{ variable1 }}, variable2 {{ variable2 }}, lista {{ lista }}</p>
+
+<div id="mostrar1" class="apagado">
+    <p>hola</p>
+</div>
+
+<button class="btn" id="btn1">Encender</button>
+<button class="btn" id="btn2">Apagar</button>
+<button class="btn" id="btn3">Llamada asíncrona</button>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    console.log("Log de consola JS");
+    $(".btn").click(function (){
+        console.log("boton presionado");
+    });
+
+    $("#btn1").click(function (){
+        $("#mostrar1").removeClass("apagado");
+        $("#mostrar1").addClass("encendido");
+    });
+    $("#btn2").click(function (){
+        $("#mostrar1").removeClass("encendido").addClass("apagado");;
+    });
+
+
+
+    $("#btn3").click(function (){
+    $.ajax({
+        type: "POST",
+        type: "GET",
+        dataType: "json",
+        // headers: {"X-CSRFToken": "{{ csrf_token }}"},
+        data: {'boton-id': 'btn3'},
+        url: "{% url 'iot:ajax_ejemplo' %}"
+    })
+    .done(function(json_res, textStatus, jqXHR) {
+        // console.log(json_res);
+        console.log(`El servidor ha respondido: ${json_res.message}`);
+    })
+    .fail(function(json_res, textStatus, jqXHR) {
+        console.log("No fue posible sincronizar con el servidor.");
+    });
+});
+</script>
+{% endblock %}
