@@ -48,9 +48,9 @@ def on_disconnect(client, userdata, rc):
 
 def on_message(client, userdata, message):
     """Callback. Cada nuevo mensaje recibido se ejecuta la función"""
-    print(f'Mensaje recibido {str(message.payload.decode("utf-8"))}')
     print(f'Topic {message.topic}',
           f'QoS {message.qos}', f'retain={message.retain}')
+    print(f'Mensaje recibido: {str(message.payload.decode("utf-8"))}')
     print('\n')
 
 
