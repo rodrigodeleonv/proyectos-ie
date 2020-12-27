@@ -3,9 +3,10 @@ from random import randint
 
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, FileResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from django.conf import settings
-from iot.models import Sensor
+from iot.models import Sensor, Measure
 
 
 def home(request):
@@ -67,5 +68,63 @@ def ajax_ejemplo(request):
     """Simple llamada por ajax desde Javascript hacia el servidor"""
     data = {
         'message': f'Mensaje del servidor. Código es: {randint(1000, 1000000)}'
+    }
+    return JsonResponse(data)
+
+
+#
+# Ejemplo de comunicación Javascript Ajax con Django Python de forma asincrona
+#
+
+def web_botones(request):
+    """
+    Envia una plantilla html con el codigo para que un navegador la muestre
+    """
+    context = {}
+    return render(request, 'iot/web_botones.html', context)
+
+
+@csrf_exempt  # para desactivar la seguridad que Django solicita por POST
+def ajax_buttons(request):
+    """
+    A traves de Javascript, se enviara por AJAX un GET o POST con información
+    de los botones presionados.
+
+    Se generar una muestra de medición aleatoria para enviarse de vuelta a
+    Javascript y que la muestra en la página en tiempo real.
+    """
+    boton_id = request.POST.get('boton_id', None)
+    print(f'Boton id {boton_id}')
+
+    if boton_id == 'boton1':
+        # Acciones ....
+        pass
+    elif boton_id == 'boton2':
+        # Acciones ....
+        pass
+    else:
+        # Acciones ....
+        pass
+
+    # Guardar una muestra aleatoria. Debe existir al menos un sensor guardado
+    # en la base de datos
+    try:
+        sensor = Sensor.objects.filter().last()
+    except Sensor.DoesNotExist:
+        sensor = None
+
+    Measure.objects.create(
+        sensor=sensor, value=randint(0, 100)
+    )
+
+    # Obtener las ultimas n muestras
+    muestras = Measure.objects.order_by('-created')[:10]
+    ultimas_mediciones = list()
+    for muestra in muestras:
+        ultimas_mediciones.append(muestra.value)
+    # print(ultimas_mediciones)
+
+    data = {
+        'mediciones': ultimas_mediciones,
     }
     return JsonResponse(data)

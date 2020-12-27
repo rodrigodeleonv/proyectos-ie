@@ -54,21 +54,21 @@
 
 
     $("#btn3").click(function (){
-    $.ajax({
-        type: "POST",
-        type: "GET",
-        dataType: "json",
-        // headers: {"X-CSRFToken": "{{ csrf_token }}"},
-        data: {'boton-id': 'btn3'},
-        url: "{% url 'iot:ajax_ejemplo' %}"
-    })
-    .done(function(json_res, textStatus, jqXHR) {
-        // console.log(json_res);
-        console.log(`El servidor ha respondido: ${json_res.message}`);
-    })
-    .fail(function(json_res, textStatus, jqXHR) {
-        console.log("No fue posible sincronizar con el servidor.");
+        $.ajax({
+            // type: "POST",
+            type: "GET",
+            dataType: "json",
+            // headers: {"X-CSRFToken": "{{ csrf_token }}"},
+            data: {'boton-id': 'btn3'},
+            url: "{% url 'iot:ajax_ejemplo' %}"
+        })
+        .done(function(json_res, textStatus, jqXHR) {
+            // console.log(json_res);
+            console.log(`El servidor ha respondido: ${json_res.message}`);
+        })
+        .fail(function(json_res, textStatus, jqXHR) {
+            console.log("No fue posible sincronizar con el servidor.");
+        });
     });
-});
 </script>
 {% endblock %}

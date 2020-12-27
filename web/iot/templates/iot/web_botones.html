@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejemplo Ajax Botones</title>
+</head>
+
+<body>
+    <h1>Presione botones</h1>
+
+    <div id="buttons">
+        <button id="boton1" class="btn">Boton1</button>
+        <button id="boton2" class="btn">Boton2</button>
+    </div>
+
+    <br>
+
+    <div id="mostrar"></div>
+
+
+
+    <!-- Agregar jQuery para manipular facil ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Aqui va todo el código de Javascript -->
+    <script>
+
+    // Ejecutar para cualquier boton presionado que tenga class=btn
+    $(".btn").click(function (){
+        boton_id = $(this).attr('id');  // obtener el id del boton que se presionó
+        console.log(`Boton presionado: id=${boton_id}`)
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            // headers: {"X-CSRFToken": "{{ csrf_token }}"},
+            data: {'boton_id': boton_id},
+            url: "{% url 'iot:ajax_buttons' %}"  // Colocar aqui la url, esta se genera con Django
+        })
+        .done(function(json_res, textStatus, jqXHR) {
+            // console.log(json_res);
+            mediciones = json_res.mediciones;
+            $("#mostrar").html("");
+            console.log(`El servidor ha respondido: ${mediciones}`);
+            for (i=0; i < mediciones.length; i++) {
+                console.log(mediciones[i]);
+                $("#mostrar").append(`${mediciones[i]} <br>`);
+            }
+
+        })
+        .fail(function(json_res, textStatus, jqXHR) {
+            console.log("No fue posible sincronizar con el servidor.");
+            $("#mostrar").html(`Error no fue posible obtener datos`);
+        });
+    });
+    </script>
+</body>
+</html>
