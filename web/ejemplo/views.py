@@ -17,11 +17,12 @@ def vista1(request):
 
 @csrf_exempt
 def json_ejemplo(request):
-    id_ = request.POST.get('boton_id', None)
-    carnet = request.POST.get('carnet', None)
-    nombre = request.POST.get('nombre', None)
-    edad = request.POST.get('edad', None)
-    print(carnet, nombre, edad)
+    boton_id = request.POST.get('boton_id', None)
+    print(f'boton_id: {boton_id}')
+    # carnet = request.POST.get('carnet', None)
+    # nombre = request.POST.get('nombre', None)
+    # edad = request.POST.get('edad', None)
+    # print(carnet, nombre, edad)
     # data = {
     #     'parametro1': 'Valor1',
     #     'parametro2': 10,
@@ -38,6 +39,5 @@ def json_ejemplo(request):
     data = {
         'mediciones': temporal
     }
-    print(temporal)
+    # print(temporal)
     return JsonResponse(data)
-

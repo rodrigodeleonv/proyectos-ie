@@ -29,10 +29,10 @@
 
     // Ejecutar para cualquier boton presionado que tenga class=btn
     $(".btn").click(function (){
-        boton_id = $(this).attr('id');  // obtener el id del boton que se presionó
+        let boton_id = $(this).attr('id');  // obtener el id del boton que se presionó
         console.log(`Boton presionado: id=${boton_id}`)
         $.ajax({
-            type: "GET",
+            type: "POST",
             dataType: "json",
             data: {'boton_id': boton_id},
             url: "{% url 'ejemplo:json_ejemplo' %}"  // Colocar aqui la url, esta se genera con Django
