@@ -29,7 +29,7 @@
 
     // Ejecutar para cualquier boton presionado que tenga class=btn
     $(".btn").click(function (){
-        let boton_id = $(this).attr('id');  // obtener el id del boton que se presionó
+        boton_id = $(this).attr('id');  // obtener el id del boton que se presionó
         console.log(`Boton presionado: id=${boton_id}`)
         $.ajax({
             type: "POST",
